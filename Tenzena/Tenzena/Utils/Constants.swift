@@ -1,0 +1,41 @@
+import Foundation
+
+#if DEBUG
+    public let admod_banner = "ca-app-pub-3940256099942544/2934735716"
+    public let admod_interstital = "ca-app-pub-3940256099942544/4411468910"
+    public let admod_interstital_splash = "ca-app-pub-3940256099942544/4411468910"
+    public let admod_reward = ""
+    public let admod_reward_interstital = ""
+    public let admod_small_native = "ca-app-pub-3940256099942544/3986624511"
+    public let admod_medium_native = "ca-app-pub-3940256099942544/3986624511"
+    public let admod_manual_native = "ca-app-pub-3940256099942544/3986624511"
+    public let admod_app_open = "ca-app-pub-3940256099942544/3419835294"
+
+    public let max_banner = ""
+    public let max_interstital = ""
+    public let max_splash = ""
+    public let max_reward = ""
+    public let max_small_native = ""
+    public let max_medium_native = ""
+    public let max_manual_native = ""
+    public let max_app_open = ""
+#else
+    public let admod_banner = "ca-app-pub-2299291161271404/4010789391"
+    public let admod_interstital = "ca-app-pub-2299291161271404/5223760725"
+    public let admod_interstital_splash = "ca-app-pub-2299291161271404/9194795328"
+    public let admod_reward = "ca-app-pub-2299291161271404/1384626058"
+    public let admod_reward_interstital = "ca-app-pub-2299291161271404/8337047216"
+    public let admod_small_native = "ca-app-pub-2299291161271404/2178832978"
+    public let admod_medium_native = "ca-app-pub-2299291161271404/9865751302"
+    public let admod_manual_native = "ca-app-pub-2299291161271404/8552669634"
+    public let admod_app_open = "ca-app-pub-2299291161271404/7239587968"
+
+    public let max_banner = "ea06a84d2804baf4"
+    public let max_interstital = "b089497c06db8034"
+    public let max_splash = "bc75e694a046dea9"
+    public let max_reward = "5fac44d4428088fd"
+    public let max_small_native = "8b51810dd7605e23"
+    public let max_medium_native = "24714d970355d936"
+    public let max_manual_native = "546b9b67dfa24ba1"
+    public let max_app_open = "420efa544d8bec70"
+#endif

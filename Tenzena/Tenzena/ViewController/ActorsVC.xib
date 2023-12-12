@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Oswald-Bold.ttf">
+            <string>Oswald-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActorsVC" customModule="Las020" customModuleProvider="target">
+            <connections>
+                <outlet property="clvActor" destination="quJ-nX-BHz" id="P37-Vn-Hec"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XoN-g3-oOz">
+                    <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqh-aN-RdC">
+                            <rect key="frame" x="0.0" y="0.0" width="56" height="56"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="hqh-aN-RdC" secondAttribute="height" id="2L7-4J-TaQ"/>
+                                <constraint firstAttribute="width" constant="56" id="dUd-Kb-VWB"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="23" minY="20" maxX="23" maxY="20"/>
+                            <state key="normal" image="ic_arrow_left"/>
+                            <connections>
+                                <action selector="actionBack:" destination="-1" eventType="touchUpInside" id="dH4-29-HBm"/>
+                            </connections>
+                        </button>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_actors" translatesAutoresizingMaskIntoConstraints="NO" id="e5j-5a-scL">
+                            <rect key="frame" x="144.66666666666666" y="23" width="104" height="100"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="100" id="IZ1-NT-5PC"/>
+                                <constraint firstAttribute="width" constant="104" id="a8W-CM-tM9"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Actors" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Par-UU-YTT">
+                            <rect key="frame" x="0.0" y="123.00000000000001" width="393" height="47.666666666666671"/>
+                            <fontDescription key="fontDescription" name="Oswald-Bold" family="Oswald" pointSize="32"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="quJ-nX-BHz">
+                            <rect key="frame" x="20" y="194.66666666666669" width="353" height="598.33333333333326"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="L4e-LH-QFw">
+                                <size key="itemSize" width="128" height="128"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="hqh-aN-RdC" firstAttribute="leading" secondItem="XoN-g3-oOz" secondAttribute="leading" id="6FH-x1-79E"/>
+                        <constraint firstItem="e5j-5a-scL" firstAttribute="centerX" secondItem="XoN-g3-oOz" secondAttribute="centerX" id="7c8-Qo-EAD"/>
+                        <constraint firstAttribute="trailing" secondItem="Par-UU-YTT" secondAttribute="trailing" id="8Pt-0q-lcE"/>
+                        <constraint firstItem="hqh-aN-RdC" firstAttribute="top" secondItem="XoN-g3-oOz" secondAttribute="top" id="8cO-mG-fvW"/>
+                        <constraint firstItem="quJ-nX-BHz" firstAttribute="top" secondItem="Par-UU-YTT" secondAttribute="bottom" constant="24" id="8dI-xe-hMZ"/>
+                        <constraint firstItem="quJ-nX-BHz" firstAttribute="leading" secondItem="XoN-g3-oOz" secondAttribute="leading" constant="20" id="Ozz-EG-ESC"/>
+                        <constraint firstItem="Par-UU-YTT" firstAttribute="leading" secondItem="XoN-g3-oOz" secondAttribute="leading" id="aQ0-db-b1j"/>
+                        <constraint firstItem="Par-UU-YTT" firstAttribute="top" secondItem="e5j-5a-scL" secondAttribute="bottom" id="u1v-tn-4sd"/>
+                        <constraint firstAttribute="bottom" secondItem="quJ-nX-BHz" secondAttribute="bottom" id="vcx-bY-2Xr"/>
+                        <constraint firstAttribute="trailing" secondItem="quJ-nX-BHz" secondAttribute="trailing" constant="20" id="w9Z-vQ-T0L"/>
+                        <constraint firstItem="e5j-5a-scL" firstAttribute="top" secondItem="XoN-g3-oOz" secondAttribute="top" constant="23" id="wEh-5H-dCV"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" red="0.015686274509803921" green="0.015686274509803921" blue="0.015686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="XoN-g3-oOz" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="5So-Ps-rZ8"/>
+                <constraint firstItem="XoN-g3-oOz" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="BRO-1Z-HM1"/>
+                <constraint firstAttribute="bottom" secondItem="XoN-g3-oOz" secondAttribute="bottom" id="rWy-6b-HRU"/>
+                <constraint firstItem="XoN-g3-oOz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="zM6-DD-0P3"/>
+            </constraints>
+            <point key="canvasLocation" x="-16.030534351145036" y="19.718309859154932"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_actors" width="424" height="404"/>
+        <image name="ic_arrow_left" width="40" height="64"/>
+    </resources>
+</document>

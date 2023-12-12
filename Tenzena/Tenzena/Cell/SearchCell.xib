@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Oswald-Regular.ttf">
+            <string>Oswald-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="SearchCell" customModule="Las020" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="132" height="244"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="132" height="244"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eWe-dV-Iaf">
+                        <rect key="frame" x="0.0" y="0.0" width="132" height="244"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bpf-ws-BEC" customClass="PImageView" customModule="Las020" customModuleProvider="target">
+                                <rect key="frame" x="14" y="0.0" width="104" height="163"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="104" id="1Wd-7o-0Wy"/>
+                                    <constraint firstAttribute="height" constant="163" id="pqr-qp-NxJ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_play_move" translatesAutoresizingMaskIntoConstraints="NO" id="E3z-7R-fBr">
+                                <rect key="frame" x="98" y="143" width="29" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="29" id="7Wi-sA-ffN"/>
+                                    <constraint firstAttribute="height" constant="28" id="mZa-bC-ZAV"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tad the Lost Explorer and…" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqv-WE-h7s">
+                                <rect key="frame" x="14" y="175" width="113" height="21"/>
+                                <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="E3z-7R-fBr" firstAttribute="bottom" secondItem="Bpf-ws-BEC" secondAttribute="bottom" constant="8" id="Fse-tR-ZmX"/>
+                            <constraint firstItem="Bpf-ws-BEC" firstAttribute="top" secondItem="eWe-dV-Iaf" secondAttribute="top" id="Jzv-t9-Ads"/>
+                            <constraint firstItem="fqv-WE-h7s" firstAttribute="trailing" secondItem="E3z-7R-fBr" secondAttribute="trailing" id="KXo-CO-0RO"/>
+                            <constraint firstItem="E3z-7R-fBr" firstAttribute="trailing" secondItem="Bpf-ws-BEC" secondAttribute="trailing" constant="9" id="LvT-Xh-lug"/>
+                            <constraint firstItem="fqv-WE-h7s" firstAttribute="top" secondItem="E3z-7R-fBr" secondAttribute="bottom" constant="4" id="Roo-Or-Pjh"/>
+                            <constraint firstItem="fqv-WE-h7s" firstAttribute="leading" secondItem="Bpf-ws-BEC" secondAttribute="leading" id="Ymb-qU-2hB"/>
+                            <constraint firstItem="Bpf-ws-BEC" firstAttribute="centerX" secondItem="eWe-dV-Iaf" secondAttribute="centerX" id="pOK-7P-IIA"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="eWe-dV-Iaf" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="0IO-V5-U1g"/>
+                <constraint firstAttribute="bottom" secondItem="eWe-dV-Iaf" secondAttribute="bottom" id="201-FS-dQx"/>
+                <constraint firstItem="eWe-dV-Iaf" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="RUe-SA-PJY"/>
+                <constraint firstAttribute="trailing" secondItem="eWe-dV-Iaf" secondAttribute="trailing" id="dE4-jY-Hfy"/>
+            </constraints>
+            <size key="customSize" width="132" height="244"/>
+            <connections>
+                <outlet property="ivPoster" destination="Bpf-ws-BEC" id="0dP-mf-s6d"/>
+                <outlet property="lblName" destination="fqv-WE-h7s" id="aM0-vA-ngq"/>
+            </connections>
+            <point key="canvasLocation" x="41.221374045801525" y="57.04225352112676"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="ic_play_move" width="180" height="176"/>
+    </resources>
+</document>
