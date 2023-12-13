@@ -1,7 +1,7 @@
 import UIKit
 import WebKit
 
-class PlayVC: BaseVC, WKNavigationDelegate{
+class PlayVC: BaseMainVC, WKNavigationDelegate{
 
     @IBOutlet weak var playYoutubeView: WKWebView!
     @IBOutlet weak var lbTitle: UILabel!

@@ -13,7 +13,7 @@ enum DetailType: Int {
     case TV_SHOW = 4
     case GENRES = 5
 }
-class ShowMoreDetailVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class ShowMoreDetailVC: BaseMainVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var clvList: UICollectionView!
     @IBOutlet weak var btnShape: UIButton!
     @IBOutlet weak var lblTitle: UILabel!

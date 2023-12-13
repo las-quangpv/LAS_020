@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PersonDetailVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class PersonDetailVC: BaseMainVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var ivPoster: UIImageView!
     @IBOutlet weak var clvKnownFor: UICollectionView!
     @IBOutlet weak var lblDate: UILabel!

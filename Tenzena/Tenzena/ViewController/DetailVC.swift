@@ -1,7 +1,7 @@
 
 import UIKit
 
-class DetailVC: BaseVC {
+class DetailVC: BaseMainVC {
 
     @IBOutlet weak var btnAllNote: UIButton!
     @IBOutlet weak var lblVoteCount: UILabel!

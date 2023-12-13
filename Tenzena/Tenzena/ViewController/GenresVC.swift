@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GenresVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class GenresVC: BaseMainVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var vLineTvShow: UIView!
     @IBOutlet weak var vLineMove: UIView!
     @IBOutlet weak var clvGenres: UICollectionView!

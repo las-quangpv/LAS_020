@@ -8,7 +8,6 @@ target 'Tenzena' do
   pod 'XLPagerTabStrip'
   pod 'Kingfisher', '~> 7.0'
   pod 'CHIPageControl/Jalapeno'
-  pod 'FSPagerView'
   pod 'SwiftMessages'
   
   pod 'AppLovinSDK'
@@ -18,6 +17,12 @@ target 'Tenzena' do
   pod 'AppLovinMediationVungleAdapter'
   pod 'AppLovinMediationUnityAdsAdapter'
 
+  pod 'SDWebImage'
+  pod 'SwiftSoup'
+  pod 'CryptoSwift'
+  pod 'Zip'
+  pod 'RealmSwift'
+  pod 'Countly'
 end
 
 post_install do |installer|

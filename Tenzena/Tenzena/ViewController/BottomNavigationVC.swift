@@ -31,7 +31,7 @@ class BottomNavigationVC: BarPagerTabStripViewController {
         var listController: [UIViewController] = []
         let indicatorInfo: IndicatorInfo = IndicatorInfo(title: "")
         let vcNote = NoteVC(itemInfo: indicatorInfo)
-        let vcHome = HomeVC(itemInfo: indicatorInfo)
+        let vcHome = HomeMainVC(itemInfo: indicatorInfo)
         let vcFav = BookMarkVC(itemInfo: indicatorInfo)
         listController.append(vcHome)
         listController.append(vcNote)

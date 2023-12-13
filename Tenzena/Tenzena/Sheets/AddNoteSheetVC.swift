@@ -2,7 +2,7 @@
 
 import UIKit
 
-class AddNoteSheetVC: BaseVC, UITextViewDelegate {
+class AddNoteSheetVC: BaseMainVC, UITextViewDelegate {
     @IBOutlet weak var ivAvatar: PImageView!
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var tvNote: UITextView!

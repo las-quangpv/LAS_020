@@ -1,14 +1,6 @@
-//
-//  SplashVC.swift
-//  VancedPlayer
-//
-//  Created by VancedPlayer on 08/05/2023.
-//
-
 import UIKit
 import Lottie
 import GoogleMobileAds
-import AppTrackingTransparency
 import AppLovinSDK
 import UserMessagingPlatform
 
@@ -17,35 +9,54 @@ class SplashVC: UIViewController {
     @IBOutlet weak var viewLoading: UIView!
     
     private let animationLoading = LottieAnimationView(name: "anim_loading")
+    
     private var timer: Timer?
-    private var timeLoading = 3
+    private var timeLoading: Int = 3
+    
+    private var admobSplashLoaded: Bool = false
+    private var admobSplash: GADInterstitialAd?
     private var isMobileAdsStartCalled = false
-
+    
+    private var applovinSplashLoaded: Bool = false
+    private var applovinSplash: MAInterstitialAd?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        UserDefaults.standard.set(1, forKey: "splashing")
+        UserDefaults.standard.synchronize()
+        
+        addNotification()
         requestConsent()
         
     }
     
-    private func requestConsent() {
+    private func requestConsent(){
         let parameters = UMPRequestParameters()
         parameters.tagForUnderAgeOfConsent = false
+        
+#if DEBUG
+        let debugSettings = UMPDebugSettings()
+        debugSettings.testDeviceIdentifiers = []
+        debugSettings.geography = .EEA
+        
+        parameters.debugSettings = debugSettings
+#endif
         UMPConsentInformation.sharedInstance.requestConsentInfoUpdate(with: parameters) { [weak self] requestConsentError in
             guard let self else { return }
             
             if let consentError = requestConsentError {
-                self.timerStartErrorConsent()
+                self.timerStart()
                 return print("Error: \(consentError.localizedDescription)")
             }
             
             UMPConsentForm.loadAndPresentIfRequired(from: self) { [weak self] loadAndPresentError in
                 guard let self else {
-                    self?.timerStartErrorConsent()
+                    self?.timerStart()
                     return
                 }
                 
                 if let consentError = loadAndPresentError {
-                    self.timerStartErrorConsent()
+                    self.timerStart()
                     return print("Error: \(consentError.localizedDescription)")
                 }
                 if UMPConsentInformation.sharedInstance.canRequestAds {
@@ -61,25 +72,77 @@ class SplashVC: UIViewController {
     private func startGoogleMobileAdsSDK() {
         DispatchQueue.main.async {
             guard !self.isMobileAdsStartCalled else { return }
+            
             self.isMobileAdsStartCalled = true
+            
             IdfaService.shared.requestTracking {
-                GADMobileAds.sharedInstance().start { _ in
-                    AdmodOpen.shared.loadAdmobOpen()
-                    self.timerStart()
-                }
             }
-            ALSdk.shared()!.mediationProvider = "max"
-            ALSdk.shared()!.initializeSdk { _ in
+#if DEBUG
+            AdmobHandle.shared.idsTest = []
+#endif
+            AdmobHandle.shared.awake { [weak self] in
+                guard let self else { return }
+                
+                self.processLogicSplashAd()
+                
+                AdmobOpenHandle.shared.preloadAdIfNeed()
             }
         }
     }
     
-    private func timerStartErrorConsent() {
-        IdfaService.shared.requestTracking {
-            GADMobileAds.sharedInstance().start { _ in
-                AdmodOpen.shared.loadAdmobOpen()
+    private func addNotification() {
+        NotificationCenter.default.addObserver(forName: .admob_ready, object: nil, queue: .main) { [weak self] _ in
+            guard let self else { return }
+            
+            if self.admobSplashLoaded {
+                self.loadSplashAdmob()
                 self.timerStart()
             }
+        }
+        
+        NotificationCenter.default.addObserver(forName: .applovin_ready, object: nil, queue: .main) { [weak self] _ in
+            guard let self else { return }
+            
+            if self.applovinSplashLoaded {
+                self.loadSplashApplovin()
+                self.timerStart()
+            }
+        }
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("ct"), object: nil, queue: .main) { [weak self] _ in
+            guard let self else { return }
+            self.navigationController?.pushViewController(BottomNavigationVC(), animated: true)
+        }
+    }
+    
+    private func processLogicSplashAd() {
+        let splTimeOut = UserDefaults.standard.integer(forKey: "splash-timeout")
+        let splash = UserDefaults.standard.string(forKey: "splash_mode") ?? ""
+        
+        if IdfaService.shared.requestedIDFA && splash == "admob" {
+            self.timeLoading = splTimeOut > 0 ? splTimeOut : 10
+            
+            if AdmobHandle.shared.isReady {
+                self.loadSplashAdmob()
+                self.timerStart()
+            }
+            else {
+                self.admobSplashLoaded = true
+            }
+        }
+        else if IdfaService.shared.requestedIDFA && splash == AdsName.applovin.rawValue {
+            self.timeLoading = splTimeOut > 0 ? splTimeOut : 10
+            
+            if ApplovinHandle.shared.isReady {
+                self.loadSplashApplovin()
+                self.timerStart()
+            }
+            else {
+                self.applovinSplashLoaded = true
+            }
+        }
+        else {
+            self.timerStart()
         }
     }
     
@@ -87,15 +150,52 @@ class SplashVC: UIViewController {
         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(self.countLoading)), userInfo: nil, repeats: true)
     }
     
+    private func loadSplashAdmob() {
+        let id = DataCommonModel.shared.admob_inter_splash
+        
+        if !IdfaService.shared.requestedIDFA || id.isEmpty {
+            return
+        }
+        
+        GADInterstitialAd.load(withAdUnitID: id, request: GADRequest()) { [weak self] ad, error in
+            guard let self else { return }
+            
+            self.timer?.invalidate()
+            self.timer = nil
+            
+            if ad != nil {
+                self.admobSplash = ad
+                self.admobSplash?.fullScreenContentDelegate = self
+                self.admobSplash?.present(fromRootViewController: self)
+            }
+            else {
+                self.admobSplash = nil
+                self.openTabView()
+            }
+        }
+    }
+    
+    private func loadSplashApplovin() {
+        applovinSplash = MAInterstitialAd(adUnitIdentifier: DataCommonModel.shared.applovin_inter_splash)
+        applovinSplash?.delegate = self
+        applovinSplash?.revenueDelegate = self
+        applovinSplash?.load()
+    }
+    
     @objc func countLoading() {
         if timeLoading == 0 {
-            timeLoading = timeLoading - 1
             timer?.invalidate()
             timer = nil
-            self.navigationController?.pushViewController(BottomNavigationVC(), animated: true)
+            self.openTabView()
         } else {
             timeLoading = timeLoading - 1
         }
+    }
+    
+    private func openTabView() {
+        UserDefaults.standard.set(0, forKey: "splashing")
+        UserDefaults.standard.synchronize()
+        NotificationCenter.default.post(name: NSNotification.Name("pollza"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -114,6 +214,51 @@ class SplashVC: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        self.animationLoading.stop()
+    }
+}
+
+extension SplashVC: GADFullScreenContentDelegate {
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        openTabView()
+    }
+    
+    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+        openTabView()
+    }
+}
+
+extension SplashVC: MAAdRevenueDelegate, MAAdViewAdDelegate {
+    func didPayRevenue(for ad: MAAd) { }
+    
+    func didLoad(_ ad: MAAd) {
+        self.timer?.invalidate()
+        self.timer = nil
+        
+        if applovinSplash?.isReady ?? false {
+            applovinSplash?.show()
+        }
+    }
+    
+    func didFailToLoadAd(forAdUnitIdentifier adUnitIdentifier: String, withError error: MAError) {
+        self.timer?.invalidate()
+        self.timer = nil
+        
+        self.openTabView()
+    }
+    
+    func didExpand(_ ad: MAAd) { }
+    
+    func didCollapse(_ ad: MAAd) { }
+    
+    func didDisplay(_ ad: MAAd) { }
+    
+    func didHide(_ ad: MAAd) {
+        self.openTabView()
+    }
+    
+    func didClick(_ ad: MAAd) { }
+    
+    func didFail(toDisplay ad: MAAd, withError error: MAError) {
+        self.openTabView()
     }
 }

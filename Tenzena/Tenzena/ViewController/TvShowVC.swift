@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TvShowVC: BaseVC {
+class TvShowVC: BaseMainVC {
     @IBOutlet weak var tbvTopRated: UITableView!
     @IBOutlet weak var clvOnTv: UICollectionView!
     @IBOutlet weak var clvTvShow: UICollectionView!

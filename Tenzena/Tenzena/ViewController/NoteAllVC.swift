@@ -2,7 +2,7 @@
 
 import UIKit
 
-class NoteAllVC: BaseVC, UITableViewDelegate, UITableViewDataSource{
+class NoteAllVC: BaseMainVC, UITableViewDelegate, UITableViewDataSource{
 
     @IBOutlet weak var tbvNote: UITableView!
     @IBOutlet weak var lblName: UILabel!

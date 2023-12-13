@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ActorsVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class ActorsVC: BaseMainVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var clvActor: UICollectionView!
     var listPerson: [DPersonModel] = []

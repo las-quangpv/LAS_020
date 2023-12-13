@@ -1,7 +1,7 @@
 
 import UIKit
 import XLPagerTabStrip
-class NoteVC: BaseVC, IndicatorInfoProvider {
+class NoteVC: BaseMainVC, IndicatorInfoProvider {
 
     @IBOutlet weak var vEmpty: UIView!
     @IBOutlet weak var tbvNote: UITableView!
@@ -43,7 +43,7 @@ class NoteVC: BaseVC, IndicatorInfoProvider {
     }
     
     @IBAction func actionSelect(_ sender: Any) {
-        let vc = SearchVC()
+        let vc = SearchMainVC()
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
