@@ -332,6 +332,7 @@
 		74EA1E9C2B29B6BA00B99D49 /* TVShowAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EA1DBB2B29B6BA00B99D49 /* TVShowAPIService.swift */; };
 		74EA1E9D2B29B6BA00B99D49 /* UtilService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EA1DBC2B29B6BA00B99D49 /* UtilService.swift */; };
 		74EA1E9E2B29B6BA00B99D49 /* IdfaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EA1DBD2B29B6BA00B99D49 /* IdfaService.swift */; };
+		74EA1EA02B29C55F00B99D49 /* AniKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EA1E9F2B29C55F00B99D49 /* AniKeychain.swift */; };
 		D13161A7324B185073C46A20 /* Pods_Tenzena.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65807022C62412E90D3D8A6C /* Pods_Tenzena.framework */; };
 /* End PBXBuildFile section */
 
@@ -665,6 +666,7 @@
 		74EA1DBB2B29B6BA00B99D49 /* TVShowAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowAPIService.swift; sourceTree = "<group>"; };
 		74EA1DBC2B29B6BA00B99D49 /* UtilService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilService.swift; sourceTree = "<group>"; };
 		74EA1DBD2B29B6BA00B99D49 /* IdfaService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdfaService.swift; sourceTree = "<group>"; };
+		74EA1E9F2B29C55F00B99D49 /* AniKeychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AniKeychain.swift; sourceTree = "<group>"; };
 		8139BE478DB02620AB873C5E /* Pods-Tenzena.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tenzena.release.xcconfig"; path = "Target Support Files/Pods-Tenzena/Pods-Tenzena.release.xcconfig"; sourceTree = "<group>"; };
 		D0BD746B86FE7E98AFF10E4E /* Pods-Tenzena.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tenzena.debug.xcconfig"; path = "Target Support Files/Pods-Tenzena/Pods-Tenzena.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1345,6 +1347,7 @@
 		74EA1D872B29B6BA00B99D49 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
+				74EA1E9F2B29C55F00B99D49 /* AniKeychain.swift */,
 				74EA1D882B29B6BA00B99D49 /* SwiftMessagesHelper.swift */,
 				74EA1D892B29B6BA00B99D49 /* GlobalExtension.swift */,
 				74EA1D8A2B29B6BA00B99D49 /* GlobalDefine.swift */,
@@ -1770,6 +1773,7 @@
 				74EA1E0C2B29B6BA00B99D49 /* TopRateTopCell.swift in Sources */,
 				74EA1E932B29B6BA00B99D49 /* TabBarController.swift in Sources */,
 				74EA1DE92B29B6BA00B99D49 /* TopRateCell.swift in Sources */,
+				74EA1EA02B29C55F00B99D49 /* AniKeychain.swift in Sources */,
 				74EA1DDF2B29B6BA00B99D49 /* TelevisionRecommendationVM.swift in Sources */,
 				74EA1E082B29B6BA00B99D49 /* ItemWithIndexCell.swift in Sources */,
 				74EA1DC22B29B6BA00B99D49 /* AdmobNativeAdTableCell.swift in Sources */,

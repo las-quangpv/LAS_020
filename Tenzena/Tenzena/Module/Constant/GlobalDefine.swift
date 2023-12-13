@@ -6,16 +6,25 @@ struct AppSetting {
     static let email = "trasarda4488@gmail.com"
     static let homepage = "https://trasarda4488.github.io"
     static let privacy = "https://trasarda4488.github.io/privacy.html"
-    static let moreapp = ""
     static let list_ads = ""
-    static let appKey = "42c2f743bf50889b9f8ea5d844175935fc4a9e60"
-    static let appRateKey = "65669cd06b17a9aa05dec75a"
-    static let secretSalt = "27ef4452a644422e479c48a4bd5d4709"
+    static let appKey = "07a2da30e8d20b95e99ba26f747f5390f7b70902"
+    static let appRateKey = "6579ac9a3c4ddcb4f45482d3"
+    static let secretSalt = "9dd8682679b824edf18cca9540f83b6c"
     static let checkingLink = "https://countlytics.info"
     static let widgetID = "65669d763c4ddcb4f44ade0e"
     static let key_movie_db = "194603623f3b6d81db9e7c24fa2feab7"
     static let titleNoti = "OTTShow"
-    static let contentNoti = "OTT Movie & Tv Show Watch"
+    static let contentNoti = "OTTShow Watch Movie & TV Show"
+    
+    public static func getIDDevice() -> String {
+        let key = "keysclientid"
+        if AniKeychain.getString(forKey: key) == nil {
+            let uuid = UUID().uuidString
+            _ = AniKeychain.setString(value: uuid, forKey: key)
+        }
+        return AniKeychain.getString(forKey: key) ?? ""
+    }
+    
 }
 
 let prefix_host_image = "https://image.tmdb.org/t/p/w500"

@@ -45,18 +45,18 @@ class SplashVC: UIViewController {
             guard let self else { return }
             
             if let consentError = requestConsentError {
-                self.timerStart()
+                self.timerStartErrorConsent()
                 return print("Error: \(consentError.localizedDescription)")
             }
             
             UMPConsentForm.loadAndPresentIfRequired(from: self) { [weak self] loadAndPresentError in
                 guard let self else {
-                    self?.timerStart()
+                    self?.timerStartErrorConsent()
                     return
                 }
                 
                 if let consentError = loadAndPresentError {
-                    self.timerStart()
+                    self.timerStartErrorConsent()
                     return print("Error: \(consentError.localizedDescription)")
                 }
                 if UMPConsentInformation.sharedInstance.canRequestAds {
@@ -143,6 +143,19 @@ class SplashVC: UIViewController {
         }
         else {
             self.timerStart()
+        }
+    }
+    
+    private func timerStartErrorConsent() {
+        IdfaService.shared.requestTracking {
+            #if DEBUG
+                AdmobHandle.shared.idsTest = []
+            #endif
+                AdmobHandle.shared.awake { [weak self] in
+                    guard let self else { return }
+                    self.processLogicSplashAd()
+                    AdmobOpenHandle.shared.preloadAdIfNeed()
+            }
         }
     }
     
