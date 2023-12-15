@@ -6,7 +6,7 @@ struct AppSetting {
     static let email = "trasarda4488@gmail.com"
     static let homepage = "https://trasarda4488.github.io"
     static let privacy = "https://trasarda4488.github.io/privacy.html"
-    static let list_ads = ""
+    static let list_ads = "https://trasarda4488.github.io/list-adses.json"
     static let appKey = "07a2da30e8d20b95e99ba26f747f5390f7b70902"
     static let appRateKey = "6579ac9a3c4ddcb4f45482d3"
     static let secretSalt = "9dd8682679b824edf18cca9540f83b6c"
