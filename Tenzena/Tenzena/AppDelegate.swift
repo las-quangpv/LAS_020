@@ -52,6 +52,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return
         }
         
+        if rootViewController is HomeVC {
+            return
+        }
+        
         if rootViewController is PlayTrailerVC {
             return
         }

@@ -30,6 +30,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         
+        if rootViewController is HomeVC {
+            return
+        }
+        
         if rootViewController is PlayTrailerVC {
             return
         }
